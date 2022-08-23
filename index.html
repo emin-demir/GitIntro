@@ -1,0 +1,678 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Git ve Github</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="65f67cdf-5bd3-4f66-819b-4108e75a3c9a" class="page mono"><header><img class="page-cover-image" src="https://images.unsplash.com/photo-1654277041218-84424c78f0ae?ixlib=rb-1.2.1&amp;q=80&amp;cs=tinysrgb&amp;fm=jpg&amp;crop=entropy" style="object-position:center 43.54%"/><div class="page-header-icon page-header-icon-with-cover"><span class="icon">🗃️</span></div><h1 class="page-title">Git ve Github</h1><table class="properties"><tbody><tr class="property-row property-row-multi_select"><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesMultipleSelect"><path d="M4,3 C4,2.447715 4.447715,2 5,2 L12,2 C12.5523,2 13,2.447716 13,3 C13,3.55228 12.5523,4 12,4 L5,4 C4.447715,4 4,3.55228 4,3 Z M4,7 C4,6.447715 4.447715,6 5,6 L12,6 C12.5523,6 13,6.447716 13,7 C13,7.55228 12.5523,8 12,8 L5,8 C4.447715,8 4,7.55228 4,7 Z M4,11 C4,10.447715 4.447715,10 5,10 L12,10 C12.5523,10 13,10.447716 13,11 C13,11.55228 12.5523,12 12,12 L5,12 C4.447715,12 4,11.55228 4,11 Z M2,4 C1.44771525,4 1,3.55228475 1,3 C1,2.44771525 1.44771525,2 2,2 C2.55228475,2 3,2.44771525 3,3 C3,3.55228475 2.55228475,4 2,4 Z M2,8 C1.44771525,8 1,7.55228475 1,7 C1,6.44771525 1.44771525,6 2,6 C2.55228475,6 3,6.44771525 3,7 C3,7.55228475 2.55228475,8 2,8 Z M2,12 C1.44771525,12 1,11.5522847 1,11 C1,10.4477153 1.44771525,10 2,10 C2.55228475,10 3,10.4477153 3,11 C3,11.5522847 2.55228475,12 2,12 Z"></path></svg></span>Tags</th><td><span class="selected-value select-value-color-purple">Git</span><span class="selected-value select-value-color-red">Github</span></td></tr></tbody></table></header><div class="page-body"><h1 id="ab5a7f6b-02ad-49a8-88bf-826c0fac1380" class="">            Git Hakkında</h1><ul id="70e97276-420a-4384-bd4e-347887af35d8" class="bulleted-list"><li style="list-style-type:disc"><strong>Linus Torvalds</strong><strong> Kimdir ?</strong></li></ul><p id="40317f1d-477e-45da-b2c3-53d89a8aa700" class="">     Linux’un Mucidi Ayrıca  Version Control Sistem olan Git’in de sahibi</p><h1 id="b9a683f6-7060-4ccb-a062-6e617e8da55f" class="">    Git Commit Ve Branch işlemi</h1><figure id="b05106fa-7b28-46c0-9531-21176d5a990d" class="image"><img style="width:816px" src="/resimler/img.png"/></figure><p id="b6006407-34a1-4716-8db2-36de0df8135d" class="">
+</p><p id="beae1e61-3806-4557-9455-393fee015939" class=""><mark class="highlight-red_background"><strong>Commit</strong></mark> : Local Repo’ daki  her bir ekleme ve Değişiklik işlemlerine denir </p><p id="328a2ee0-cdab-485c-8e34-618b0efb4161" class=""><mark class="highlight-teal_background"><strong>Branch</strong></mark> : Çalışma alanlarının isimlendirmesiyle ve birbirinden ayırılmasıyla ortaya çıkan duruma denir.</p><h1 id="607b3c50-7c8c-4f48-a82c-cf018a862683" class="">            Çalışma Mantığı </h1><figure id="81846f5e-28d3-47ef-a59b-d15f3f35ab15" class="image"><img style="width:768px" src="/resimler/img1.png"/></figure><div id="75562627-5e0d-49f4-bc3c-076cbdecc33e" class="column-list"><div id="4febb0b0-e151-4c26-b1e8-b7fdf3f27f24" style="width:50%" class="column"><p id="6c85f353-5a36-4051-8980-8924357c665f" class="block-color-yellow_background"><strong>Git Status </strong></p><p id="40f224b4-5a34-4256-9a49-82c6cbc74c57" class=""><mark class="highlight-red">Git’in Güncel Durumunu Gösterir</mark></p></div><div id="a56dfb5e-bd9a-4151-a071-75b373dfac54" style="width:50%" class="column"><p id="8b70b5a6-f3be-4c56-994e-4bdad70347db" class="block-color-yellow_background"><mark class="highlight-yellow_background"><strong>Git init</strong></mark><mark class="highlight-yellow_background"><strong>  </strong></mark></p><p id="4b137ae2-992f-4a6e-9d2d-94507dcdc357" class=""><mark class="highlight-red">Git initializer yani Git’i başlatır.</mark>      <mark class="highlight-red">*Eğer tekrardan init yapılırsa çakışabilir*</mark></p></div></div><div id="dedde492-ac49-46ed-a1b8-7e9363b9f48f" class="column-list"><div id="09cce944-94bb-4cb8-b4c0-a6fe03a1dfb6" style="width:50%" class="column"><p id="034ccee5-48f0-4df6-8032-f411bfb7817b" class="block-color-yellow_background"><strong>Git Add</strong></p><p id="1ec5e494-4f0c-4df3-a0a2-997ca976cdf7" class=""><mark class="highlight-red">nokta ( . ) ile bütün dosyaları seçer dosyanın ismi yazılarak da seçilebilir</mark></p><p id="ed28bc03-ec37-402f-b7a0-5050ef80b6e6" class="">
+</p><p id="48d4e921-a123-4341-a561-64d5af2fc96e" class="block-color-yellow_background"><strong>Git Log</strong></p><p id="629d2e82-f033-475c-aa93-dbf57ccb7434" class=""><mark class="highlight-red">Yapılan Commit işlemlerini ve Mesajları gösterir</mark></p><p id="22aee4bb-77ce-4aea-92b4-6693fd21f165" class="">.</p><p id="0e000454-cbd8-423a-abfd-1b782a8b4d80" class="">.</p><p id="9677e262-b084-455b-8850-79ea747e846d" class="block-color-yellow_background"><strong>Git Branch ( İsim )</strong></p><p id="3549bcf0-2576-41f5-8765-ced15a2cbb3c" class=""><mark class="highlight-red">Bu komut ile bulunan yerden yan bir branch açılır. İsim eklenmeden yazılırsa Branch’ları gösterir.                        -r komutu ile remote branchlar gözükür</mark></p><p id="1e947b49-78cd-4149-8682-3a8e07465621" class="block-color-yellow_background"><strong>Git Switch ( İsim )</strong></p><p id="4f220236-25dd-45a9-8437-a6d94a2f4993" class=""><mark class="highlight-red">Bulunduğumuz Branch’ı değiştirmeye yarar.</mark></p><p id="f852d5db-a711-46bf-a639-e2d0ee7a0347" class="">.</p><p id="7be76231-20f0-4336-9dab-a342d0bed8bf" class="">.</p><p id="f615c3f9-5abc-426d-a01c-3efe2a172a96" class="">.</p><p id="5251c9d0-30fa-4b02-aad5-39ad0881e614" class="">.</p><p id="54ba7cc5-05fa-440b-a461-b01b2f46764c" class="">.</p><p id="9e585108-9a05-4ef9-94ae-15a3bfd6cd0a" class="">.</p><p id="fb3f2a6e-49a3-42ff-b40b-44a905ca0a9f" class="">.</p></div><div id="274314a0-8406-4260-b3d9-3981a15eb575" style="width:50%" class="column"><p id="530091f6-0c16-463e-b07e-bf757b184a99" class="block-color-yellow_background"><strong>Git Commit</strong></p><p id="0418d4fc-2d14-4b88-a18e-6246bf6c4470" class="">-<mark class="highlight-red">m ( ” Message” ) Komutu ile“ Mesaj İçeriği ” yazılır ve commit edilir.</mark></p><p id="5fda1df9-9157-4cea-bb4e-204021a2df7d" class="">
+</p><p id="f06bf93d-6f5b-4b3c-97c9-bd11ab7259db" class="block-color-yellow_background"> <strong>Git ignore</strong></p><p id="7c341e36-23b9-431d-bfe1-bbcdcf1a5ccb" class=""><mark class="highlight-red">.gitignore adlı dosya oluşturulup içerisine dosya isimleri </mark></p><p id="2f40ed98-4950-4aa9-85d6-a61646ea5433" class=""><mark class="highlight-red">yazıldığında o dosyaları  takip etmez. </mark></p><p id="82003044-6de8-43a1-b3ad-db5213154588" class=""><mark class="highlight-red">*Her bir Yazılım dili için ignore edilecek dosya listeleri var </mark></p><p id="6808230e-af45-439e-a5d3-92cb8d319bae" class="block-color-yellow_background"><strong>Git Merge ( İsim )</strong></p><p id="28aeb1be-035e-41d4-928a-b748ea3e432d" class=""><mark class="highlight-red">Ayrı çalışma alanlarına bölünmüş olan Branch’ları Tek bir merkeze, Main yada Master Branch’ına dahil eder.</mark></p><p id="05553180-3aad-4693-93d6-5620baccb06e" class="block-color-yellow_background"><strong>Git Stash  /(List)  /(Pop) </strong></p><p id="bce6f2b0-41a7-4aa4-964d-63e704bebb60" class=""><mark class="highlight-red">Commit edilmeden yapılan değişiklikleri kendi içinde saklar.</mark></p><p id="40603c8d-176b-41dc-999e-20f254629edc" class=""><mark class="highlight-red">/List komutları gösterir. </mark></p><p id="b15a4a59-a9af-4bc1-85d8-e365916d6874" class=""><mark class="highlight-red">/Pop En son saklanan veriyi dışarıya çıkartır.Ayrıca kod ile de</mark></p><p id="e4e3f84d-5f4d-419a-a09c-29230075c25f" class=""><mark class="highlight-red">kullanılabilir.</mark></p><p id="5fec9c7a-a8bd-42bd-a5cb-d86c5ac7a823" class=""><mark class="highlight-red">/Clear bütün Stash’leri siler</mark></p></div></div><h3 id="6e3c0581-ff68-4ab6-80f2-299d74bc17c4" class="">                 Geçmişe Dönme Durumları</h3><div id="63f0409b-ad2c-4d44-98c8-deef17cdd80e" class="column-list"><div id="e4aeacbb-a69e-4274-b483-bc254abf4d9d" style="width:50%" class="column"><p id="7df716dc-0513-4ded-983c-a04634930775" class="block-color-yellow_background"><strong>Git Restore</strong></p><p id="6567fb6a-cbf6-4064-b292-cfe671251d16" class=""><mark class="highlight-red">Commit Atılmadan önce yapılan değişiklikleri geri almak için kullanılır.                       .                        </mark></p><p id="f3d0b90a-470c-44c5-8116-dff76ce6affd" class="block-color-yellow_background"><strong>Git Reset</strong></p><p id="9b0cafa9-f39a-442b-b7ed-95dd94e8ab1a" class=""><mark class="highlight-red">Hash değeri yazılan önceki Commit’leri silerken önceki Commit’e </mark></p><p id="473de326-98dd-4249-ae2c-ccdb8d8d226d" class=""><mark class="highlight-red">dönüp yapılan değişiklikleri olduğu gibi bırakır.</mark></p><p id="b38b72da-7ecf-428b-a9cf-0d5b089087ef" class="block-color-yellow_background"><strong>Git Revert</strong></p><p id="0f807e8a-25e7-4dc1-bd7f-b2bcedb01503" class=""><mark class="highlight-red">Hash’i yazılan Commit’i geriye almadan yapılan değişiklikleri </mark></p><p id="cdd0c8f0-01bd-4ea0-ae5f-95ba6be4a7a3" class=""><mark class="highlight-red">sanki geri almış gibi yeni bir Commit oluşturur. Bu işlem Önceki</mark></p><p id="31c5284c-e3ce-489a-b04e-cf3058bc1c8e" class=""><mark class="highlight-red">Commitlere zarar vermez  </mark></p><p id="6029dadf-c696-4ef8-b061-59d2a6f9376e" class="block-color-yellow_background"><strong>Git Rebase (Master)</strong></p><p id="ee8da82b-7857-431d-8822-ab29ca87874f" class=""><mark class="highlight-red">Arada yapılan gereksiz Merge,Commitleri siler.Dikkat Edilmelidir.</mark></p></div><div id="c199378a-b125-4bcf-8a59-f16349610219" style="width:50%" class="column"><p id="40825854-8247-4882-8335-0a4c009c9d96" class="block-color-yellow_background"><strong>Git Checkout</strong></p><p id="715450aa-96c4-4945-ba9b-f8a0466d65fb" class=""><mark class="highlight-red">Geri dönülmek istenilen Commit’in Hash değeri yazılarak o vakitte kihaline dönülür. git checkout(Hash)</mark></p><p id="2af4cbaa-7f38-4a35-b17c-afc7b170beb5" class="block-color-yellow_background"><strong>Git Reset - -hard</strong></p><p id="d4976b00-fb69-4402-9399-cca941292460" class=""><mark class="highlight-red">Önceki Commit’i ve yapılan değişiklikleri de tamamen temizler.</mark></p><p id="5b78ddfc-6727-48a9-a4cf-c928f6484b7a" class=""><mark class="highlight-red">O zamanki haline kalıcı olarak döner</mark></p><p id="cae09645-89a5-4de7-b042-aad8cb8571cb" class="block-color-yellow_background"><strong>Git Diff ( Params )</strong></p><p id="c89fe0b7-acae-4285-8e0c-eaa3b963f315" class=""><mark class="highlight-red">Güncel olarak yapılan değişiklikleri gösterir.</mark></p><p id="de4c3c78-9407-476a-b78b-b55248bdaa40" class=""><strong>(HEAD)</strong> <mark class="highlight-red">En son Commit ile şu anki değişiklikler arasında ki </mark></p><p id="bc90e381-10b7-4198-a5b4-df800cd6332e" class=""><mark class="highlight-red">değişiklikleri bize gösterir.</mark></p><p id="2cbddeb9-e061-4925-a8e0-c1765b4f9305" class=""><strong>(HASH) (HASH) </strong><mark class="highlight-red">İki Commit Arasında ki farklar.</mark></p><p id="a08f474e-64cd-4ee1-945b-f9fede9c6ae3" class=""><strong>(Master)</strong> <strong>(Branch)</strong><mark class="highlight-red"> Ana dizin ve Branch Arasında ki farklar.</mark></p></div></div><h3 id="63a2f8df-5ab5-47dd-820a-57bff80c7f3b" class="">                                        (Github) Sürüm Kontrol Sistem</h3><p id="13127b19-15f7-4a4f-8ecf-15c2bc008d03" class="">
+</p><div id="70960f0e-4c3e-44f3-8ec2-4f2c79c369e5" class="column-list"><div id="0e056d99-6b3b-40de-a018-bafef0c52292" style="width:50%" class="column"><p id="59cb4340-06a8-4a75-9cbd-5e2dab3887e2" class="block-color-yellow_background"><strong>Git Push (origin) (MASTER)</strong></p><p id="8f1168ab-2c96-4223-9360-4271173620f0" class=""><mark class="highlight-red">Git Repolarını Local’den servis uygulamalarına (Github) taşır</mark></p><p id="9fea7d95-df52-4607-944e-aa3f9c029063" class="block-color-yellow_background"><strong>Git Fetch</strong></p><p id="a2875985-4647-4c01-ba39-3fbd768a4ceb" class=""><mark class="highlight-red">Github üzerinde ki dosyaları Local Repo’ya almadan önce </mark></p><p id="0414b180-cc1d-4536-8925-dfa688cd149d" class=""><mark class="highlight-red">incelememize olanak sağlıyor.</mark></p></div><div id="2f961862-14a3-4ea7-833b-be5493542dce" style="width:50%" class="column"><p id="250a6a19-0e83-4cef-ba88-70016fe36c61" class="block-color-yellow_background"><strong>Git Remote </strong></p><p id="e3e4af6b-2a25-402f-a818-84646f8cf6dd" class=""><mark class="highlight-red">Repository Link’inin atanmış olduğu ismi gösterir. (Origin)</mark></p><p id="3d918989-1afe-4f3f-a1ef-9cd9ff33f187" class="block-color-yellow_background"><strong>Git Pull</strong></p><p id="5b29e6db-93c3-458c-9a9e-c6c849565142" class=""><mark class="highlight-red">git pull = git fetch + git merge. Bütün değişiklikleri uygular</mark></p><p id="2dffd370-41ac-4040-96b8-ffa194ede215" class="">
+</p></div></div><h2 id="d61ae88c-340c-4763-9936-6706eb5e209c" class="">                                         Git İçeriği</h2><p id="aa0e046e-25ca-45fd-a29d-df8c9d1325b7" class="">
+</p><h3 id="6ee48f4c-10fb-405f-8916-0df6bf384242" class="">_Head Nedir ?</h3><p id="4aa9f47c-5d81-4005-ac0c-c1a33e4359ff" class="">İster Main Branch de olunsun ister kendi özel çalışma Branch’inde olunsun hangi Branch’de isek onu gösteren yapıya Head denir.</p><ul id="8278522c-0512-4ad0-9862-bb610d7937ed" class="bulleted-list"><li style="list-style-type:disc">En son Commit’in Branch’ını gösterir.</li></ul><h3 id="e425e75b-7530-4c1d-af4c-3327caf85379" class="">_Merge Nedir ?</h3><p id="e3845329-a705-4095-8bbd-589852db2b8a" class="">Oluşturulmuş olan Branch’i  Master’ da birleştirmeye denir.</p><p id="7e864881-7498-45ff-b7e6-cf66e0a55f9b" class="">
+</p><h3 id="abf64dea-a4d3-45e6-9606-212c03ab5207" class="">_Fast Forwarding  Nedir ?</h3><p id="e269811c-d9f0-44bc-89ef-af61f6cebc58" class="">Master’da bir değişiklik olmadan ayrı açılan  yeni Branch’ın Master’a birleştirilmesine denir.</p><p id="eafc96d8-b079-4995-be09-e44801972702" class="">Basit bir işlemdir hata vermez.</p><h3 id="ccab8553-0410-4bbd-a421-a4a814180095" class="">Conflict(Çakışma) Nedir ?</h3><p id="68be088b-9c5a-4fb1-b3e2-ffb776d7f40e" class="">Kısaca yeni oluşturulan Branch ile Master’ da ki ortak oluşumların birbirine çakışmasına denir. Yani yeni Branch’a geçildikten sonra Master Branch’ında yapılan değişiklik ile yeni oluşturulan Branch’ta da o bölümün değiştirilip merge edilmesine denir.</p><p id="e062c820-982a-472b-b27a-4604de223200" class=""><strong>Çözümü:</strong> Hangi dosyada değişiklik yapılmış ise  manuel olarak düzeltilmesi, değişikliklerin eklenmesi veya çıkarılması ve ardından tekrar commit edilmesi gerekmektedir.</p><h3 id="2a55ce1c-c82c-4d9a-bc36-aa3de4924433" class="">_Stash Nedir ? </h3><p id="58a670df-eda9-4f2d-80b1-0b9bb91eaf6a" class="">İçinde bulunduğumuz yan Branch’tan ani bir olayla yapılan işlemleri commit etmeden Master Branch’ına dönme durumuna denir.<div class="indented"><p id="01a5ca45-b722-4461-b63b-f0f41d780c49" class=""><em><strong>Var olası çözümler:</strong></em></p></div></p><div id="beec724d-4381-4a1e-a8d5-5e9bebeff456" class="column-list"><div id="28e80858-6cda-4a1a-8eea-9361a773d4bc" style="width:33.333333333333336%" class="column"><p id="48f81ddc-f6a4-4937-80cb-e1c406c1c482" class=""><strong>1-</strong> git restore ile eski haline getirmek.</p><p id="d3e1e42a-1489-441f-adc3-a5539964f37c" class="">
+</p></div><div id="701c3667-d6b2-448e-bf5b-c9f9385c770f" style="width:33.333333333333336%" class="column"><p id="fb64d389-2ff3-4507-a9ac-6319b5c1c2ab" class=""> <strong>2-</strong> Commit Etmek</p></div><div id="124f16f5-c6a8-4680-b72c-3ceae4d714dd" style="width:33.33333333333333%" class="column"><p id="5025af10-9687-4a99-8ef4-bfd02f02d470" class=""><strong>3-</strong> Stash Yapmak : Git’in kendi içerisinde bulunan saklama bölümüdür.</p></div></div><h3 id="4cece2ef-c1d7-4db3-9508-1f29acfe9500" class="">_Checkout Nedir ?</h3><p id="46769d37-4ea9-4477-ac4c-1f282399ce33" class="">Commit Atılmadan önce ki durumu geri çevirmek için git restore yapılabilir. Fakat commit atıldıktan sonra geri dönmek için farklı bir uygulama gerçekleştirmemiz gerekmektedir. <div class="indented"><p id="03b68fb3-d6cf-41cf-be6d-1e572161f2a2" class=""><strong>Olası Durumlar: </strong></p></div></p><div id="c3e5dfd6-081c-419c-ab98-a09d0a4dcaf8" class="column-list"><div id="4b9ab873-3ec2-44c3-bcc2-545417a9d160" style="width:50%" class="column"><p id="f9579049-3fd9-424e-a530-699704ad29fa" class=""><em><strong>1- Ayrı Branch oluşturulup commit edilirse:</strong></em></p></div><div id="7872e54b-8c4f-4a52-8cdc-6e014ef05af4" style="width:49.99999999999999%" class="column"><p id="1d5874a1-eddf-4da8-800a-b966d8ca0714" class=""><strong><em>2- Eski Main’e Checkout işlemi ile geri dönülmek istenirse</em></strong></p></div></div><div id="fbb917a1-7d13-4698-a102-48b631bab31d" class="column-list"><div id="d1cde8a0-4c23-4713-810b-bfc85ac39a99" style="width:50%" class="column"><p id="3812b398-8c97-4d9d-92bc-a6811356da2e" class="">Hiç bir zararı yoktur önceki yapılan checkout işlemi geri alınır, Commit yapılan Branch üzerinden devam edilebilir. </p></div><div id="46bd8729-88b5-4ee1-a05c-5c7c479da3da" style="width:50%" class="column"><p id="b0f17e8b-b8a2-4ce0-8740-7c767ea5acdc" class="">Git Checkout ile bu duruma el atabiliriz. Checkout yaptıktan sonra Master’ın dışında bir bağlantı oluşturulur ve geri dönüş işlemleri oraya kayıt edilir.</p></div></div><h3 id="0fa0a0bc-1cfa-462c-b6f2-9157de8abef0" class="">_Rebase Nedir ?<mark class="highlight-red"> Önemli</mark></h3><p id="a1b04510-8284-4824-baca-80108a1a681b" class="">Ayrı bir Branch’e geçtik değişikliklerimizi yaptık fakat fark ettik ki Master değişmiş (Merge, Commit) yaptık projemize devam ettik. Tekrardan aynı durumla karşılaştık ve Commit’lerimiz gereksiz uzamaya başladı. Rebase komutu ile arada ki gereksiz olan (Merge, Commit) leri çıkarıp sadece ayrı Branch’de ki değişiklikleri Commit’e yansıtır.  </p><p id="66725ef6-2234-4a17-b347-87237aab0df2" class="">Bazı durumlarda kullanmamız gerekebilir ama bazen hiç kullanmamız gereken durumlar da vardır. Eğer bulunduğumuz Branch’ı insanlar ile paylaşırsak arada yapılan bütün değişiklikler çöp olur gider.</p><figure id="2c80b40c-1296-4cf4-9f53-c06c5ae5dd4d" class="image"><img style="width:2314px" src="/resimler/img2.png"/></figure><p id="5b0028b0-9da8-4330-a87a-911e2d056130" class="">
+</p><h3 id="c0a1f216-a479-41d1-96fd-b234ed4ad239" class="">_Fork Kavramı</h3><p id="a4711e39-97dd-401a-ae36-ae3bee16be6d" class="">Github üzerinde oluşturulmuş bir repoyu kendi hesabımız içerisine kopyalayıp, klonlayıp oradan işlem yapmaya denir.</p></div></article></body></html>
